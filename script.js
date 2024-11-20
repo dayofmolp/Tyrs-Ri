@@ -1,45 +1,30 @@
-// Task Management
+// Theme Toggle
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+});
+
+// Dynamic Task Handling
 const taskList = document.getElementById("task-list");
 const taskForm = document.getElementById("task-form");
-const newTaskInput = document.getElementById("new-task");
-
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const newTask = newTaskInput.value.trim();
+  const newTask = document.getElementById("new-task").value.trim();
   if (newTask) {
-    addTask(newTask);
-    newTaskInput.value = "";
+    const li = document.createElement("li");
+    li.textContent = newTask;
+    taskList.appendChild(li);
   }
 });
 
-function addTask(task) {
-  const li = document.createElement("li");
-  li.textContent = task;
-  taskList.appendChild(li);
-}
-
-// Blog Management
-const blogPosts = document.getElementById("blog-posts");
-const newBlogPost = document.getElementById("new-blog-post");
-const publishBlog = document.getElementById("publish-blog");
-
-publishBlog.addEventListener("click", () => {
-  const content = newBlogPost.value.trim();
-  if (content) {
-    const post = document.createElement("div");
-    post.textContent = content;
-    post.classList.add("blog-post");
-    blogPosts.appendChild(post);
-    newBlogPost.value = "";
-  }
-});
-
-// Animated Background Particles
-function createParticles() {
+// Interactive Particles
+function createParticle() {
   const particle = document.createElement("div");
   particle.classList.add("particle");
+  particle.style.left = Math.random() * window.innerWidth + "px";
+  particle.style.top = Math.random() * window.innerHeight + "px";
   document.body.appendChild(particle);
   setTimeout(() => particle.remove(), 4000);
 }
-
-setInterval(createParticles, 100);
+setInterval(createParticle, 200);
