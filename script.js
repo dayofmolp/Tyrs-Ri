@@ -83,25 +83,23 @@ blogCards.forEach((button) => {
 
 // Weather API Integration
 async function fetchWeather() {
-  const apiKey = "d2297de5c3477f2f01bbbf9d76c9052d"; // Your provided API key
-  const city = "Cape Town";
   const weatherInfo = document.getElementById("weather-info");
-
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+      "https://api.open-meteo.com/v1/forecast?latitude=-33.9258&longitude=18.4232&current_weather=true"
     );
     if (!response.ok) throw new Error("Weather data not available");
 
     const data = await response.json();
-    const temp = data.main.temp;
-    const weather = data.weather[0].description;
-    weatherInfo.textContent = `🌤️ ${city}: ${temp}°C, ${weather}`;
+    const temp = data.current_weather.temperature;
+    const condition = data.current_weather.weathercode; // Simple weather code
+    weatherInfo.textContent = `🌤️ Cape Town: ${temp}°C, Code: ${condition}`;
   } catch (error) {
     weatherInfo.textContent = "Unable to fetch weather data.";
     console.error("Weather Fetch Error: ", error.message);
   }
 }
+
 fetchWeather();
 
 // Quotes API Integration
