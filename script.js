@@ -83,22 +83,26 @@ blogCards.forEach((button) => {
 
 // Weather API Integration
 async function fetchWeather() {
-  const apiKey = "your-weather-api-key-here"; // Replace with your API key
-  const city = "Cape Town"; // Default city
+  const apiKey = "d2297de5c3477f2f01bbbf9d76c9052d"; // Your API key
+  const city = "Cape Town";
   const weatherInfo = document.getElementById("weather-info");
 
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     );
+    if (!response.ok) throw new Error("Weather data not available");
+
     const data = await response.json();
     const temp = data.main.temp;
     const weather = data.weather[0].description;
     weatherInfo.textContent = `🌤️ ${city}: ${temp}°C, ${weather}`;
   } catch (error) {
     weatherInfo.textContent = "Unable to fetch weather data.";
+    console.error("Weather Fetch Error: ", error.message);
   }
 }
+
 fetchWeather();
 
 // Particle.js Background
