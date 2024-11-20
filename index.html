@@ -15,52 +15,73 @@
       <p>Your Task & Resource Hub</p>
     </div>
     <button id="theme-toggle">🌙</button>
-    <nav id="sidebar">
-      <button id="menu-toggle">☰ Menu</button>
+    <nav>
       <ul>
         <li><a href="#tasks">Tasks</a></li>
         <li><a href="#resources">Resources</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#blog">Blog</a></li>
-        <li><a href="#game">Game</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <!-- Task Section -->
-    <section id="tasks" class="card">
-      <h2>Task Manager</h2>
+    <!-- RPG Tasks Section -->
+    <section id="tasks" class="glass">
+      <h2>Quest Log</h2>
+      <div id="character-card">
+        <h3>Adventurer Stats</h3>
+        <p>Level: <span id="level">1</span></p>
+        <p>XP: <span id="xp">0</span>/100</p>
+        <p>HP: 100</p>
+      </div>
       <ul id="task-list"></ul>
       <form id="task-form">
-        <input type="text" id="new-task" placeholder="Add a new task..." required>
-        <button type="submit">Add Task</button>
+        <input type="text" id="new-task" placeholder="Add a quest..." required>
+        <button type="submit">Add Quest</button>
       </form>
     </section>
 
-    <!-- Resource Section -->
-    <section id="resources" class="card">
-      <h2>Academic Resources</h2>
-      <input type="text" id="resource-search" placeholder="Search resources...">
-      <ul id="resource-list">
-        <li><i class="fas fa-graduation-cap"></i><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
-        <li><i class="fas fa-database"></i><a href="https://www.sqlzoo.net" target="_blank">SQL Zoo</a></li>
-        <!-- Add more resources -->
-      </ul>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="glass">
+      <h2>Portfolio</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>E-commerce Platform for Artisans</h3>
+          <p>A custom platform featuring seamless payment integration.</p>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">View Code</a>
+        </div>
+        <div class="card">
+          <h3>Responsive Travel Blog Website</h3>
+          <p>Fully responsive blog with custom CMS integration.</p>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">View Code</a>
+        </div>
+        <div class="card">
+          <h3>Custom CRM for Small Businesses</h3>
+          <p>Streamlining customer management with custom tools.</p>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">View Code</a>
+        </div>
+      </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="card">
+    <section id="blog" class="glass">
       <h2>Blog</h2>
-      <textarea id="new-blog-post" placeholder="Share your thoughts..."></textarea>
-      <button id="publish-blog">Publish</button>
-      <div id="blog-posts"></div>
-    </section>
-
-    <!-- Game Section -->
-    <section id="game" class="card">
-      <h2>Catch the Falling Star</h2>
-      <div id="game-container">
-        <canvas id="game-canvas"></canvas>
-        <div id="scoreboard">Score: <span id="score">0</span></div>
+      <div class="grid">
+        <article>
+          <h3>How AI is Changing Our World</h3>
+          <p>Discover how AI is transforming industries and our lives.</p>
+        </article>
+        <article>
+          <h3>10 Tips to Stay Productive</h3>
+          <p>Level up your productivity with these proven tips!</p>
+        </article>
+        <article>
+          <h3>The Ultimate Beginner’s Guide to Web Development</h3>
+          <p>Step-by-step guide to kickstart your web development journey.</p>
+        </article>
       </div>
     </section>
   </main>
