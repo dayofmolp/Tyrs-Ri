@@ -1,44 +1,81 @@
-/* Moving Background */
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background: black;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
-/* XP Progress Bar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.neon {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+/* XP Bar */
 #xp-bar {
-  width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 15px;
+  border-radius: 10px;
   overflow: hidden;
+  margin-top: 10px;
 }
 
 #xp-fill {
   height: 100%;
-  background: #ffb400;
+  background: linear-gradient(to right, #ff8c00, #ff00ff);
   width: 0%;
-  transition: width 0.5s;
+}
+
+/* Portfolio Cards */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-card {
+  height: 200px;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 /* Blog Section */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .blog-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1.5rem;
+  background: linear-gradient(135deg, #ff00ff, #ff8c00);
+  padding: 20px;
   border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  color: white;
 }
 
 .blog-card:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  opacity: 0.9;
 }
