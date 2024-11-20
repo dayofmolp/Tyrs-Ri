@@ -83,7 +83,7 @@ blogCards.forEach((button) => {
 
 // Weather API Integration
 async function fetchWeather() {
-  const apiKey = "d2297de5c3477f2f01bbbf9d76c9052d"; // Your API key
+  const apiKey = "d2297de5c3477f2f01bbbf9d76c9052d"; // Your provided API key
   const city = "Cape Town";
   const weatherInfo = document.getElementById("weather-info");
 
@@ -102,8 +102,23 @@ async function fetchWeather() {
     console.error("Weather Fetch Error: ", error.message);
   }
 }
-
 fetchWeather();
+
+// Quotes API Integration
+async function fetchQuote() {
+  const quoteContainer = document.getElementById("quote");
+  try {
+    const response = await fetch("https://api.quotable.io/random");
+    if (!response.ok) throw new Error("Quote API not available");
+
+    const data = await response.json();
+    quoteContainer.textContent = `"${data.content}" — ${data.author}`;
+  } catch (error) {
+    quoteContainer.textContent = "Unable to fetch a quote at the moment.";
+    console.error("Quote Fetch Error: ", error.message);
+  }
+}
+fetchQuote();
 
 // Particle.js Background
 particlesJS("particles-js", {
