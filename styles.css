@@ -14,7 +14,7 @@ body {
 }
 
 /* Sections */
-#character-profile, #quest-board, #feedback-hub {
+#character-profile, #quest-board, #skill-tracker, #feedback-hub, #gdi-evaluation {
   margin: 20px;
   padding: 20px;
   border: 2px solid #ff00ff;
@@ -33,25 +33,22 @@ body {
   color: #00ff00;
 }
 
+button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: #ffffff;
+  background: #ff00ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #cc00cc;
+}
+
 /* Feedback Hub */
-#feedback {
+#feedback, #gdi-response {
   color: #00ffff;
   font-style: italic;
-}
-
-/* XP Bar (if added later) */
-.xp-bar {
-  height: 20px;
-  width: 100%;
-  background: #333;
-  border: 2px solid #ff00ff;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.xp-bar-fill {
-  height: 100%;
-  width: 50%; /* Example: Replace with dynamic width based on XP */
-  background: #ff00ff;
 }
