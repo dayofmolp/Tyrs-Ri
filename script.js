@@ -1,226 +1,39 @@
-// RPG Task Management and XP System
+// Task and XP System
 let level = 1;
 let xp = 0;
 
-const taskList = document.getElementById("task-list");
-const completedTasks = document.querySelector("#completed-tasks ul");
-const taskForm = document.getElementById("task-form");
-const newTaskInput = document.getElementById("new-task");
-
-// Add new task
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const taskName = newTaskInput.value.trim();
-  if (taskName) {
-    addTask(taskName);
-    newTaskInput.value = "";
-  }
-});
-
-// Add task to Active Quests
-function addTask(taskName) {
-  const li = document.createElement("li");
-  li.className = "task-item";
-
-  const taskText = document.createElement("span");
-  taskText.textContent = taskName;
-
-  const completeButton = document.createElement("button");
-  completeButton.textContent = "Complete";
-  completeButton.className = "button complete-btn";
-  completeButton.addEventListener("click", () => completeTask(li));
-
-  li.appendChild(taskText);
-  li.appendChild(completeButton);
-  taskList.appendChild(li);
-}
-
-// Complete a task and earn XP
-function completeTask(taskItem) {
-  const taskName = taskItem.querySelector("span").textContent;
-  taskItem.remove();
-  addCompletedTask(taskName);
-  gainXP(25); // Add 25 XP per task
-}
-
-// Add task to Completed Quests
-function addCompletedTask(taskName) {
-  const li = document.createElement("li");
-  li.textContent = taskName;
-  li.className = "completed-task";
-  completedTasks.appendChild(li);
-}
-
-// Gain XP and Level Up
-function gainXP(amount) {
+function addXP(amount) {
   xp += amount;
   if (xp >= 100) {
     level++;
-    xp = xp % 100;
-    alert(`🎉 Level up! You are now level ${level}!`);
-  }
-  updateUI();
-}
-
-// Update XP and Level UI
-function updateUI() {
-  document.getElementById("xp").innerText = xp;
-  document.getElementById("level").innerText = level;
-  document.getElementById("xp-fill").style.width = (xp / 100) * 100 + "%";
-}
-
-// Update UI initially
-updateUI();
-
-// Blog Interactivity
-const blogCards = document.querySelectorAll(".blog-card .button");
-
-blogCards.forEach((button) => {
-  button.addEventListener("click", () => {
-    alert("This feature is under development! Stay tuned for more updates.");
-  });
-});
-
-// Weather API Integration
-async function fetchWeather() {
-  const weatherInfo = document.getElementById("weather-info");
-  try {
-    const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=-33.9258&longitude=18.4232&current_weather=true"
-    );
-    if (!response.ok) throw new Error("Weather data not available");
-
-    const data = await response.json();
-    const temp = data.current_weather.temperature;
-    const condition = data.current_weather.weathercode; // Simple weather code
-    weatherInfo.textContent = `🌤️ Cape Town: ${temp}°C, Code: ${condition}`;
-  } catch (error) {
-    weatherInfo.textContent = "Unable to fetch weather data.";
-    console.error("Weather Fetch Error: ", error.message);
+    xp = 0;
+    updateFeedback(`Level Up! You are now Level ${level}`);
   }
 }
 
-fetchWeather();
+// Skill-Specific Tracking
+let skills = {
+  SQL: { level: 1, xp: 0 },
+  CloudComputing: { level: 1, xp: 0 },
+};
 
-// Quotes API Integration
-async function fetchQuote() {
-  const quoteContainer = document.getElementById("quote");
-  try {
-    const response = await fetch("https://api.quotable.io/random");
-    if (!response.ok) throw new Error("Quote API not available");
-
-    const data = await response.json();
-    quoteContainer.textContent = `"${data.content}" — ${data.author}`;
-  } catch (error) {
-    quoteContainer.textContent = "Unable to fetch a quote at the moment.";
-    console.error("Quote Fetch Error: ", error.message);
+function addSkillXP(skill, xpEarned) {
+  if (skills[skill]) {
+    skills[skill].xp += xpEarned;
+    if (skills[skill].xp >= 100) {
+      skills[skill].level++;
+      skills[skill].xp = 0;
+      updateFeedback(`Skill Up! ${skill} is now Level ${skills[skill].level}`);
+    }
   }
 }
-fetchQuote();
 
-// Particle.js Background
-particlesJS("particles-js", {
-  particles: {
-    number: {
-      value: 100,
-      density: {
-        enable: true,
-        value_area: 800,
-      },
-    },
-    color: {
-      value: "#ffffff",
-    },
-    shape: {
-      type: "circle",
-      stroke: {
-        width: 0,
-        color: "#000000",
-      },
-      polygon: {
-        nb_sides: 5,
-      },
-    },
-    opacity: {
-      value: 0.5,
-      random: false,
-      anim: {
-        enable: false,
-        speed: 1,
-        opacity_min: 0.1,
-        sync: false,
-      },
-    },
-    size: {
-      value: 3,
-      random: true,
-      anim: {
-        enable: false,
-        speed: 40,
-        size_min: 0.1,
-        sync: false,
-      },
-    },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: "#ffffff",
-      opacity: 0.4,
-      width: 1,
-    },
-    move: {
-      enable: true,
-      speed: 6,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 1200,
-      },
-    },
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: {
-        enable: true,
-        mode: "repulse",
-      },
-      onclick: {
-        enable: true,
-        mode: "push",
-      },
-      resize: true,
-    },
-    modes: {
-      grab: {
-        distance: 400,
-        line_linked: {
-          opacity: 1,
-        },
-      },
-      bubble: {
-        distance: 400,
-        size: 40,
-        duration: 2,
-        opacity: 8,
-        speed: 3,
-      },
-      repulse: {
-        distance: 200,
-        duration: 0.4,
-      },
-      push: {
-        particles_nb: 4,
-      },
-      remove: {
-        particles_nb: 2,
-      },
-    },
-  },
-  retina_detect: true,
-});
+// Feedback System
+function updateFeedback(message) {
+  const feedbackElement = document.getElementById("feedback");
+  feedbackElement.textContent = message;
+}
+
+// Example Usage
+addXP(50); // Add 50 XP to the overall level
+addSkillXP("SQL", 60); // Add 60 XP to the SQL skill
