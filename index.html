@@ -12,8 +12,8 @@
   <section id="character-profile">
     <h2 class="neon">Character Profile</h2>
     <p><strong>Class:</strong> Tech Scholar</p>
-    <p><strong>Level:</strong> 1</p>
-    <p><strong>Active Skills:</strong> None</p>
+    <p><strong>Level:</strong> <span id="character-level">1</span></p>
+    <p><strong>Active Skills:</strong> <span id="active-skills">None</span></p>
   </section>
 
   <!-- Quest Board Section -->
@@ -23,12 +23,34 @@
       <li>Main Quest: Learn SQL Basics <span class="quest-status">Active</span></li>
       <li>Side Quest: Setup Vercel Deployment <span class="quest-status">Completed</span></li>
     </ul>
+    <input type="text" id="task-input" placeholder="Enter a new quest">
+    <button onclick="addQuest()">Add Quest</button>
+  </section>
+
+  <!-- Skill Tracker Section -->
+  <section id="skill-tracker">
+    <h2 class="neon">Skill Tracker</h2>
+    <p><strong>Select Skill:</strong></p>
+    <select id="skill-select">
+      <option value="SQL">SQL</option>
+      <option value="CloudComputing">Cloud Computing</option>
+    </select>
+    <input type="number" id="xp-input" placeholder="XP Earned">
+    <button onclick="addSkillXPFromInput()">Add XP</button>
   </section>
 
   <!-- Feedback Hub Section -->
   <section id="feedback-hub">
     <h2 class="neon">Feedback Hub</h2>
     <p id="feedback">No feedback yet.</p>
+  </section>
+
+  <!-- GDI Feedback Section -->
+  <section id="gdi-evaluation">
+    <h2 class="neon">GDI Feedback</h2>
+    <textarea id="task-log" placeholder="Describe your completed task or progress"></textarea>
+    <button onclick="sendFeedback()">Submit to GDI</button>
+    <p id="gdi-response"></p>
   </section>
 </body>
 </html>
