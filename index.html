@@ -3,101 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tyrs R - Task & Resource Hub</title>
+  <title>GDI RPG Framework</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Moving Particle Background -->
-  <div id="particles-js"></div>
+  <!-- Character Profile Section -->
+  <section id="character-profile">
+    <h2 class="neon">Character Profile</h2>
+    <p><strong>Class:</strong> Tech Scholar</p>
+    <p><strong>Level:</strong> 1</p>
+    <p><strong>Active Skills:</strong> None</p>
+  </section>
 
-  <header>
-    <div id="branding">
-      <h1><span class="neon">Tyrs</span> R</h1>
-      <p>Your Ultimate Task & Resource Hub</p>
-      <div id="weather">
-        <p id="weather-info">Loading weather...</p>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#tasks">Tasks</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#blog">Blog</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Quest Board Section -->
+  <section id="quest-board">
+    <h2 class="neon">Quest Board</h2>
+    <ul id="quests">
+      <li>Main Quest: Learn SQL Basics <span class="quest-status">Active</span></li>
+      <li>Side Quest: Setup Vercel Deployment <span class="quest-status">Completed</span></li>
+    </ul>
+  </section>
 
-  <main>
-    <!-- RPG Tasks Section -->
-    <section id="tasks" class="glass">
-      <h2>Quest Log</h2>
-      <div id="character-card">
-        <div class="stats">
-          <h3>Adventurer Stats</h3>
-          <p><b>Level:</b> <span id="level">1</span></p>
-          <p><b>XP:</b> <span id="xp">0</span>/100</p>
-          <div id="xp-bar"><div id="xp-fill"></div></div>
-        </div>
-      </div>
-      <form id="task-form">
-        <input type="text" id="new-task" placeholder="Add a new quest..." required>
-        <button type="submit" class="button">Add Quest</button>
-      </form>
-      <div id="task-lists">
-        <div id="active-tasks">
-          <h3>Active Quests</h3>
-          <ul id="task-list"></ul>
-        </div>
-        <div id="completed-tasks">
-          <h3>Completed Quests</h3>
-          <ul></ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="glass">
-      <h2>Portfolio</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-card" style="background-image: url('project1.jpg');">
-          <h3>E-commerce Platform</h3>
-          <p>Custom platform for artisans</p>
-        </div>
-        <div class="portfolio-card" style="background-image: url('project2.jpg');">
-          <h3>Interactive Game</h3>
-          <p>Web-based RPG game</p>
-        </div>
-        <div class="portfolio-card" style="background-image: url('project3.jpg');">
-          <h3>Corporate Website</h3>
-          <p>Sleek, responsive corporate website</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="glass">
-      <h2>Blog</h2>
-      <div class="blog-grid">
-        <div class="blog-card">
-          <h3>How AI is Reshaping Our Lives</h3>
-          <p>Discover the power of AI.</p>
-          <button class="button">Read More</button>
-        </div>
-        <div class="blog-card">
-          <h3>Master Productivity in 2024</h3>
-          <p>10 game-changing tips!</p>
-          <button class="button">Read More</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2024 Tyrs R. Designed with innovation.</p>
-  </footer>
-  <script src="script.js"></script>
+  <!-- Feedback Hub Section -->
+  <section id="feedback-hub">
+    <h2 class="neon">Feedback Hub</h2>
+    <p id="feedback">No feedback yet.</p>
+  </section>
 </body>
 </html>
